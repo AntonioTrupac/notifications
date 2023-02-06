@@ -1,5 +1,5 @@
 function App() {
-  return <div>dada</div>;
+  return <div className="bg-light-gray h-screen">dada</div>;
 }
 
 export default App;

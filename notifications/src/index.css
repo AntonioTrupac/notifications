@@ -4,13 +4,13 @@
 
 @layer base {
   @font-face {
-    font-family: 'Custom Inter';
+    font-family: 'Custom Jakarta';
     font-weight: 100 900;
-    src: url("/fonts/Inter-VariableFont_slnt,wght.ttf") format("truetype");
+    src: url("/fonts/PlusJakartaSans-VariableFont_wght.ttf") format("truetype");
   }
 
   html {
-    font-family: 'Custom Inter', sans-serif;
+    font-family: 'Custom Jakarta', sans-serif;
     scroll-behavior: smooth;
   }
 }
