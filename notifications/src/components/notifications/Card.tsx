@@ -1,5 +1,7 @@
 import Avatar from "./Avatar";
+
 import { timeAgo } from "./util";
+
 interface CardProps {
   notification: {
     id: number;
@@ -12,9 +14,10 @@ interface CardProps {
     date: string;
   };
   className?: string;
+  count: number;
 }
 
-const Card = ({ notification, className }: CardProps) => {
+const Card = ({ notification, className, count }: CardProps) => {
   const relativeTime = timeAgo(notification.date);
 
   return (
@@ -38,6 +41,11 @@ const Card = ({ notification, className }: CardProps) => {
             >
               {notification.boldContent}
             </a>
+          )}
+
+          {notification.id <= 3 && count > 0 && (
+            //red dot
+            <div className=" ml-1 h-[8px] w-[8px] rounded-full bg-primary-red " />
           )}
         </div>
 

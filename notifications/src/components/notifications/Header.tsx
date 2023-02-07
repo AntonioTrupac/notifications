@@ -1,14 +1,24 @@
-const Header = () => {
+interface HeaderProps {
+  count: number;
+  setCount: (count: number) => void;
+}
+
+const Header = ({ count, setCount }: HeaderProps) => {
   return (
     <div className="flex justify-between">
       <div className="flex items-center">
         <h1 className="text-2xl font-extrabold">Notifications</h1>
-        <span className="rad ml-3 rounded-md bg-primary-blue px-[11px] pt-[1px] pb-1 font-extrabold text-white">
-          3
-        </span>
+        {count === 0 ? null : (
+          <span className="rad ml-3 rounded-md bg-primary-blue px-[11px] pt-[1px] pb-1 font-extrabold text-white">
+            {count}
+          </span>
+        )}
       </div>
 
-      <button className="text-dark-grayish active:text-primary-blue">
+      <button
+        className="text-dark-grayish active:text-primary-blue"
+        onClick={() => setCount(0)}
+      >
         Mark all as read
       </button>
     </div>

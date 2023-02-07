@@ -1,21 +1,44 @@
 import Card from "./Card";
 import Header from "./Header";
 
+import { useAtom } from "jotai";
+import { atomWithStorage } from "jotai/utils";
+import { mockNotifications } from "./util";
+
 interface NotificationsProps {
   className?: string;
 }
 
+// using jotai here just to persist the count in local storage
+// could have been done with useState as well but state would have been lost on refresh
+// this is just to show how jotai can be used with other libraries
+// the solution with the right api here would be to have a read/unread field in the notification object
+// and then just filter the notifications array to get the count
+// and then use the read/unread field to determine if the notification is read or not
+// to read all notifications, we would just set the read field to true for all notifications via an POST api call or a mutation
+// or through the cache if using something like apollo/react-query
+
+export const unreadNotificationsCountAtom = atomWithStorage(
+  "unreadNotifCount",
+  mockNotifications.filter((notification) => !notification.read).length
+);
+
 const Notifications = ({ className }: NotificationsProps) => {
+  const [count, setCount] = useAtom(unreadNotificationsCountAtom);
+
   return (
     <div className={className}>
-      <Header />
+      <Header count={count} setCount={setCount} />
 
       <div className="mt-8">
         {mockNotifications.map((notification) => (
           <Card
+            count={count}
             key={notification.id}
             notification={notification}
-            className="mb-2 flex items-start py-[18px] pl-5 pr-8"
+            className={`mb-2 flex items-start py-[18px] pl-5 pr-8 ${
+              count > 0 && notification.id <= 3 ? "bg-light-gray" : ""
+            }`}
           />
         ))}
       </div>
@@ -24,76 +47,3 @@ const Notifications = ({ className }: NotificationsProps) => {
 };
 
 export default Notifications;
-
-const mockNotifications = [
-  {
-    id: 1,
-    username: "Jane Cooper",
-    content: "reacted to your recent post",
-    boldContent: "My first tournament today!",
-    privateMessage: "",
-    type: "post",
-    imageUrl: "https://i.pravatar.cc/150?img=1",
-    date: "2022-10-30T14:01:59.689Z",
-  },
-  {
-    id: 2,
-    username: "Angela Gray",
-    content: "followed you",
-    boldContent: "",
-    privateMessage: "",
-    type: "follow",
-    imageUrl: "https://i.pravatar.cc/150?img=2",
-    date: "2022-01-15T14:01:59.689Z",
-  },
-  {
-    id: 3,
-    username: "Jacob Thompson",
-    content: "has joined the group",
-    boldContent: "Chess Club",
-    privateMessage: "",
-    type: "group",
-    imageUrl: "https://i.pravatar.cc/150?img=3",
-    date: "2022-01-14T14:01:59.689Z",
-  },
-  {
-    id: 4,
-    username: "Rizky Hasanuddin",
-    content: "sent you a private message",
-    boldContent: "",
-    privateMessage: "",
-    type: "message",
-    imageUrl: "https://i.pravatar.cc/150?img=4",
-    date: "2022-01-13T14:01:59.689Z",
-  },
-  {
-    id: 5,
-    username: "Kimberly Smith",
-    content: "commented on your picture",
-    privateMessage: "",
-    boldContent: "",
-    type: "comment",
-    imageUrl: "https://i.pravatar.cc/150?img=5",
-    date: "2022-01-12T14:01:59.689Z",
-  },
-  {
-    id: 6,
-    username: "Nathan Peterson",
-    content: "reacted to your recent post",
-    privateMessage: "",
-    type: "post",
-    boldContent: "5 end-game strategies to increase your win rate",
-    imageUrl: "https://i.pravatar.cc/150?img=6",
-    date: "2022-01-11T14:01:59.689Z",
-  },
-  {
-    id: 7,
-    username: "Anna Kim",
-    content: "left the group",
-    boldContent: "Chess Club",
-    privateMessage: "",
-    type: "group",
-    imageUrl: "https://i.pravatar.cc/150?img=7",
-    date: "2022-01-10T14:01:59.689Z",
-  },
-];
