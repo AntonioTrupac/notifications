@@ -12,7 +12,11 @@ const Notifications = ({ className }: NotificationsProps) => {
 
       <div className="mt-8">
         {mockNotifications.map((notification) => (
-          <Card notification={notification} />
+          <Card
+            key={notification.id}
+            notification={notification}
+            className="mb-2 flex items-start py-[18px] pl-5 pr-8"
+          />
         ))}
       </div>
     </div>
@@ -30,7 +34,7 @@ const mockNotifications = [
     privateMessage: "",
     type: "post",
     imageUrl: "https://i.pravatar.cc/150?img=1",
-    date: "2023-01-16T03:24:00",
+    date: "2022-10-30T14:01:59.689Z",
   },
   {
     id: 2,
@@ -40,7 +44,7 @@ const mockNotifications = [
     privateMessage: "",
     type: "follow",
     imageUrl: "https://i.pravatar.cc/150?img=2",
-    date: "2023-01-15T03:24:00",
+    date: "2022-01-15T14:01:59.689Z",
   },
   {
     id: 3,
@@ -50,7 +54,7 @@ const mockNotifications = [
     privateMessage: "",
     type: "group",
     imageUrl: "https://i.pravatar.cc/150?img=3",
-    date: "2023-01-14T03:24:00",
+    date: "2022-01-14T14:01:59.689Z",
   },
   {
     id: 4,
@@ -60,7 +64,7 @@ const mockNotifications = [
     privateMessage: "",
     type: "message",
     imageUrl: "https://i.pravatar.cc/150?img=4",
-    date: "2023-01-13T03:24:00",
+    date: "2022-01-13T14:01:59.689Z",
   },
   {
     id: 5,
@@ -70,7 +74,7 @@ const mockNotifications = [
     boldContent: "",
     type: "comment",
     imageUrl: "https://i.pravatar.cc/150?img=5",
-    date: "2023-01-12T03:24:00",
+    date: "2022-01-12T14:01:59.689Z",
   },
   {
     id: 6,
@@ -80,7 +84,7 @@ const mockNotifications = [
     type: "post",
     boldContent: "5 end-game strategies to increase your win rate",
     imageUrl: "https://i.pravatar.cc/150?img=6",
-    date: "2023-01-11T03:24:00",
+    date: "2022-01-11T14:01:59.689Z",
   },
   {
     id: 7,
@@ -90,6 +94,6 @@ const mockNotifications = [
     privateMessage: "",
     type: "group",
     imageUrl: "https://i.pravatar.cc/150?img=7",
-    date: "2023-01-10T03:24:00",
+    date: "2022-01-10T14:01:59.689Z",
   },
 ];
