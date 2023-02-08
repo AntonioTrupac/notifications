@@ -39,3 +39,4 @@ Users should be able to:
 - Tailwind CSS
 - Flexbox layout
 - Desktop First workflow
+- Jotai
