@@ -24,16 +24,18 @@ const Card = ({ notification, className, count }: CardProps) => {
     <div className={className}>
       <Avatar imageUrl={notification.imageUrl} alt={notification.username} />
 
-      <div className="ml-5">
-        <div>
-          <a href="#" className="font-extrabold active:text-primary-blue">
-            {notification.username}
-          </a>
-          <span className="ml-1 text-dark-grayish">{notification.content}</span>
-          {notification.boldContent && (
+      <div className="relative ml-5">
+        <a href="#" className="font-extrabold active:text-primary-blue">
+          {notification.username}
+        </a>
+
+        <span className="ml-1 text-dark-grayish">{notification.content}</span>
+
+        {notification.boldContent && (
+          <>
             <a
               href="#"
-              className={`ml-1 font-extrabold text-dark-grayish active:text-primary-blue ${
+              className={`relative ml-1 font-extrabold text-dark-grayish active:text-primary-blue ${
                 notification.type === "group"
                   ? "text-primary-blue"
                   : "text-dark-grayish"
@@ -41,11 +43,13 @@ const Card = ({ notification, className, count }: CardProps) => {
             >
               {notification.boldContent}
             </a>
-          )}
+          </>
+        )}
 
+        <div className="absolute right-0">
           {notification.id <= 3 && count > 0 && (
             //red dot
-            <div className=" ml-1 h-[8px] w-[8px] rounded-full bg-primary-red " />
+            <div className="top-0 ml-1 h-[8px] w-[8px] flex-shrink-0 rounded-full bg-primary-red" />
           )}
         </div>
 

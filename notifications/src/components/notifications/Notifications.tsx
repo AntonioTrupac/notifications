@@ -30,7 +30,7 @@ const Notifications = ({ className }: NotificationsProps) => {
     <div className={className}>
       <Header count={count} setCount={setCount} />
 
-      <div className="mt-8">
+      <div className="mt-8 h-full">
         {mockNotifications.map((notification) => (
           <Card
             count={count}
