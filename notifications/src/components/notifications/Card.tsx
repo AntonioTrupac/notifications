@@ -11,6 +11,7 @@ interface CardProps {
     privateMessage?: string;
     type: string;
     imageUrl: string;
+    commentImage?: string;
     date: string;
   };
   className?: string;
@@ -24,7 +25,11 @@ const Card = ({ notification, className, count }: CardProps) => {
     <div className={className}>
       <Avatar imageUrl={notification.imageUrl} alt={notification.username} />
 
-      <div className="ml-[12px] inline-block text-sm leading-[17px] md:ml-5 md:text-base md:leading-5">
+      <div
+        className={`ml-[12px] inline-block text-sm leading-[17px] md:text-base md:leading-5 ${
+          notification.commentImage ? "mr-5 md:mr-0 md:flex-grow" : ""
+        }`}
+      >
         <a href="#" className="font-extrabold active:text-primary-blue ">
           {notification.username}
         </a>
@@ -54,7 +59,7 @@ const Card = ({ notification, className, count }: CardProps) => {
 
         <div>
           {notification.privateMessage && (
-            <div className="mt-3 cursor-pointer rounded-md border p-4 active:bg-light-gray md:px-5 md:pt-[17px] md:pb-5">
+            <div className="mt-3 cursor-pointer rounded-md border p-4 active:bg-light-grayish-2 md:px-5 md:pt-[17px] md:pb-5">
               <p className="font-medium text-dark-grayish">
                 {notification.privateMessage}
               </p>
@@ -62,52 +67,14 @@ const Card = ({ notification, className, count }: CardProps) => {
           )}
         </div>
       </div>
+
+      {notification.commentImage && (
+        <div className="flex h-[39px] w-[39px] flex-shrink-0 items-center justify-center rounded-md md:h-[45px] md:w-[45px]">
+          <img src={notification.commentImage} alt="" className="rounded-md" />
+        </div>
+      )}
     </div>
   );
 };
 
 export default Card;
-{
-  /* <div className="ml-5 flex-col">
-        <div className="break-words">
-          <a href="#" className="font-extrabold active:text-primary-blue">
-            {notification.username}
-          </a>
-
-          <span>
-            <span className="ml-1 text-dark-grayish">
-              {notification.content}
-            </span>
-
-            {notification.id <= 3 &&
-              count > 0 &&
-              notification.boldContent == "" && (
-                //red dot
-                <div className="top-0 ml-1 h-[8px] w-[8px] flex-shrink-0 rounded-full bg-primary-red" />
-              )}
-          </span>
-
-          {notification.boldContent && (
-            <>
-              <a
-                href="#"
-                className={`relative ml-1 font-extrabold text-dark-grayish active:text-primary-blue ${
-                  notification.type === "group"
-                    ? "text-primary-blue"
-                    : "text-dark-grayish"
-                }`}
-              >
-                {notification.boldContent}
-              </a>
-
-              {notification.id <= 3 && count > 0 && (
-                //red dot
-                <div className="top-0 ml-1 h-[8px] w-[8px] flex-shrink-0 rounded-full bg-primary-red" />
-              )}
-            </>
-          )}
-        </div>
-
-        <div className="mt-[3px] text-dark-grayish">{relativeTime}</div>
-      </div> */
-}
