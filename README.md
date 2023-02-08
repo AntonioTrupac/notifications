@@ -31,7 +31,7 @@ Users should be able to:
 
 ### Links
 - Solution URL: [here](https://github.com/AntonioTrupac/notifications)
-- Live Site URL: [here](https://your-live-site-url.com)
+- Live Site URL: [here](https://63e401adf594600008b68425--statuesque-sunburst-5c5894.netlify.app/)
 
 
 ### Built with
