@@ -26,8 +26,8 @@ Users should be able to:
 
 ### Screenshot
 
-![Desktop](./notifications/screenshot/notifications-desktop.png)
-![Mobile](./notifications/screenshot/notifications-mobile.png)
+![Desktop](./screenshot/notifications-desktop.png)
+![Mobile](./screenshot/notifications-mobile.png)
 
 ### Links
 - Solution URL: [here](https://github.com/AntonioTrupac/notifications)
