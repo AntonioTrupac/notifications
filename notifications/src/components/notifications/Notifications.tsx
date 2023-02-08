@@ -36,9 +36,11 @@ const Notifications = ({ className }: NotificationsProps) => {
             count={count}
             key={notification.id}
             notification={notification}
-            // className={`relative mb-2 flex items-start py-[18px] pl-5 pr-8 ${
-            //   count > 0 && notification.id <= 3 ? "bg-light-gray" : ""
-            // }`}
+            className={` ${
+              notification.privateMessage ? "mb-0" : "mb-2"
+            } inline-flex w-full items-start rounded-lg pt-[18px] pb-[17px] pl-5 pr-8 ${
+              count > 0 && notification.id <= 3 ? "bg-light-gray" : ""
+            }`}
           />
         ))}
       </div>

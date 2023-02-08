@@ -21,11 +21,7 @@ const Card = ({ notification, className, count }: CardProps) => {
   const relativeTime = timeAgo(notification.date);
 
   return (
-    <div
-      className={`relative mb-2 inline-flex w-full items-start py-[18px] pl-5 pr-8 ${
-        count > 0 && notification.id <= 3 ? "bg-light-gray" : ""
-      }`}
-    >
+    <div className={className}>
       <Avatar imageUrl={notification.imageUrl} alt={notification.username} />
 
       <div className="ml-5 inline-block">
@@ -33,12 +29,14 @@ const Card = ({ notification, className, count }: CardProps) => {
           {notification.username}
         </a>
 
-        <span className="ml-1 text-dark-grayish">{notification.content}</span>
+        <span className="ml-1 font-medium text-dark-grayish">
+          {notification.content}
+        </span>
 
         {notification.boldContent && (
           <a
             href="#"
-            className={`relative ml-1 font-extrabold text-dark-grayish active:text-primary-blue ${
+            className={`ml-1 font-extrabold text-dark-grayish active:text-primary-blue ${
               notification.type === "group"
                 ? "text-primary-blue"
                 : "text-dark-grayish"
@@ -49,11 +47,22 @@ const Card = ({ notification, className, count }: CardProps) => {
         )}
 
         {notification.id <= 3 && count > 0 && (
-          //red dot
-          <div className="ml-1 inline-block h-[8px] w-[8px] rounded-full bg-primary-red" />
+          <div className="ml-[6px] mb-[1px] inline-block h-[8px] w-[8px] rounded-full bg-primary-red" />
         )}
 
-        <div className="mt-[3px] text-dark-grayish">{relativeTime}</div>
+        <div className="mt-[2px] text-base font-medium leading-5 text-grayish">
+          {relativeTime}
+        </div>
+
+        <div>
+          {notification.privateMessage && (
+            <div className="mt-3 cursor-pointer rounded-md border px-5 pt-[17px] pb-5 active:bg-light-gray">
+              <p className="text-[16px] font-medium leading-5 text-dark-grayish">
+                {notification.privateMessage}
+              </p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

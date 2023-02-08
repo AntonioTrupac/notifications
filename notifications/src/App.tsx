@@ -2,8 +2,8 @@ import { Notifications } from "./components";
 
 function App() {
   return (
-    <div className="m-auto flex h-screen items-center justify-center bg-light-gray">
-      <Notifications className="h-full max-h-[840px] w-[730px] overflow-auto rounded-2xl bg-white px-8" />
+    <div className="flex h-screen items-center justify-center bg-light-gray">
+      <Notifications className="h-full w-[730px] rounded-2xl bg-white px-4 md:max-h-[840px] md:px-8" />
     </div>
   );
 }

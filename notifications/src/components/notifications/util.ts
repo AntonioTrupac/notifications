@@ -77,7 +77,7 @@ export const mockNotifications = [
     username: "Rizky Hasanuddin",
     content: "sent you a private message",
     boldContent: "",
-    privateMessage: "",
+    privateMessage: "Hello, thanks for setting up the Chess Club. I’ve been a member for a few weeks now and I’m already having lots of fun and improving my game.",
     type: "message",
     imageUrl: "https://i.pravatar.cc/150?img=4",
     date: "2022-01-13T14:01:59.689Z",
