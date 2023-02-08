@@ -37,8 +37,8 @@ const Notifications = ({ className }: NotificationsProps) => {
             key={notification.id}
             notification={notification}
             className={` ${
-              notification.privateMessage ? "mb-0" : "mb-2"
-            } inline-flex w-full items-start rounded-lg pt-[18px] pb-[17px] pl-5 pr-8 ${
+              notification.privateMessage ? "mb-0" : "mb-[10px] md:mb-2"
+            } inline-flex w-full items-start rounded-lg py-4 pr-[20px] pl-4 md:pt-[18px] md:pb-[17px] md:pl-5 md:pr-8 ${
               count > 0 && notification.id <= 3 ? "bg-light-gray" : ""
             }`}
           />
