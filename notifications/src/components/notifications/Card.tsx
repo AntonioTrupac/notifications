@@ -21,10 +21,14 @@ const Card = ({ notification, className, count }: CardProps) => {
   const relativeTime = timeAgo(notification.date);
 
   return (
-    <div className={className}>
+    <div
+      className={`relative mb-2 inline-flex w-full items-start py-[18px] pl-5 pr-8 ${
+        count > 0 && notification.id <= 3 ? "bg-light-gray" : ""
+      }`}
+    >
       <Avatar imageUrl={notification.imageUrl} alt={notification.username} />
 
-      <div className="relative ml-5">
+      <div className="ml-5 inline-block">
         <a href="#" className="font-extrabold active:text-primary-blue">
           {notification.username}
         </a>
@@ -32,26 +36,22 @@ const Card = ({ notification, className, count }: CardProps) => {
         <span className="ml-1 text-dark-grayish">{notification.content}</span>
 
         {notification.boldContent && (
-          <>
-            <a
-              href="#"
-              className={`relative ml-1 font-extrabold text-dark-grayish active:text-primary-blue ${
-                notification.type === "group"
-                  ? "text-primary-blue"
-                  : "text-dark-grayish"
-              }`}
-            >
-              {notification.boldContent}
-            </a>
-          </>
+          <a
+            href="#"
+            className={`relative ml-1 font-extrabold text-dark-grayish active:text-primary-blue ${
+              notification.type === "group"
+                ? "text-primary-blue"
+                : "text-dark-grayish"
+            }`}
+          >
+            {notification.boldContent}
+          </a>
         )}
 
-        <div className="absolute right-0">
-          {notification.id <= 3 && count > 0 && (
-            //red dot
-            <div className="top-0 ml-1 h-[8px] w-[8px] flex-shrink-0 rounded-full bg-primary-red" />
-          )}
-        </div>
+        {notification.id <= 3 && count > 0 && (
+          //red dot
+          <div className="ml-1 inline-block h-[8px] w-[8px] rounded-full bg-primary-red" />
+        )}
 
         <div className="mt-[3px] text-dark-grayish">{relativeTime}</div>
       </div>
@@ -60,3 +60,47 @@ const Card = ({ notification, className, count }: CardProps) => {
 };
 
 export default Card;
+{
+  /* <div className="ml-5 flex-col">
+        <div className="break-words">
+          <a href="#" className="font-extrabold active:text-primary-blue">
+            {notification.username}
+          </a>
+
+          <span>
+            <span className="ml-1 text-dark-grayish">
+              {notification.content}
+            </span>
+
+            {notification.id <= 3 &&
+              count > 0 &&
+              notification.boldContent == "" && (
+                //red dot
+                <div className="top-0 ml-1 h-[8px] w-[8px] flex-shrink-0 rounded-full bg-primary-red" />
+              )}
+          </span>
+
+          {notification.boldContent && (
+            <>
+              <a
+                href="#"
+                className={`relative ml-1 font-extrabold text-dark-grayish active:text-primary-blue ${
+                  notification.type === "group"
+                    ? "text-primary-blue"
+                    : "text-dark-grayish"
+                }`}
+              >
+                {notification.boldContent}
+              </a>
+
+              {notification.id <= 3 && count > 0 && (
+                //red dot
+                <div className="top-0 ml-1 h-[8px] w-[8px] flex-shrink-0 rounded-full bg-primary-red" />
+              )}
+            </>
+          )}
+        </div>
+
+        <div className="mt-[3px] text-dark-grayish">{relativeTime}</div>
+      </div> */
+}

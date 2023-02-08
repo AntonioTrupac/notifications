@@ -30,15 +30,15 @@ const Notifications = ({ className }: NotificationsProps) => {
     <div className={className}>
       <Header count={count} setCount={setCount} />
 
-      <div className="mt-8 h-full">
+      <div className="mt-8 h-full md:h-auto">
         {mockNotifications.map((notification) => (
           <Card
             count={count}
             key={notification.id}
             notification={notification}
-            className={`mb-2 flex items-start py-[18px] pl-5 pr-8 ${
-              count > 0 && notification.id <= 3 ? "bg-light-gray" : ""
-            }`}
+            // className={`relative mb-2 flex items-start py-[18px] pl-5 pr-8 ${
+            //   count > 0 && notification.id <= 3 ? "bg-light-gray" : ""
+            // }`}
           />
         ))}
       </div>

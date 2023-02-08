@@ -5,7 +5,7 @@ interface HeaderProps {
 
 const Header = ({ count, setCount }: HeaderProps) => {
   return (
-    <div className="sticky top-0 z-10 flex justify-between bg-white">
+    <div className="sticky top-0 z-10 flex justify-between bg-white pt-8">
       <div className="flex items-center">
         <h1 className="text-2xl font-extrabold">Notifications</h1>
         {count === 0 ? null : (
